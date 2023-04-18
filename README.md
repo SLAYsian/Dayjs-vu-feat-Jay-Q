@@ -1,2 +1,3 @@
-# Day.js-vu-feat-Jay-Q
+# Dayjs-vu-feat-Jay-Q
+
 Daily Planner
