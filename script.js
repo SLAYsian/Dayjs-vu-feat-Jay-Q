@@ -3,17 +3,14 @@
 // SECTION: DOM ELEMENTS
 let currentDateEl = $("#currentDay");
 let timeBlockEl = $(".time-block");
-let timeBlockText = $(".description");
 let saveBtnEl = $(".saveBtn");
+let timeBlockText = $(".description");
 let today = dayjs();
 
 // Wrap all code that interacts with the DOM in a call to jQuery to ensure that
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
 $(document).ready(function () {
-  // SECTION: DISPLAY CURRENT DATE
-  currentDateEl.text(today.format("dddd MMMM D, YYYY"));
-
   // TODO: Add code to apply the past, present, or future class to each time
   // block by comparing the id to the current hour. HINTS: How can the id
   // attribute of each time-block be used to conditionally add or remove the
@@ -30,71 +27,56 @@ $(document).ready(function () {
   // let calendarStartHour = 9; // 9am
   // let calendarEndHour = 21; // 9pm
 
+  // NOTES: 1st block keeps showing future
+  // function getTimeStatus(hour) {
+  //   let currentHour = dayjs().format("hA");
+  //   console.log("currentHour: ", currentHour);
+  //   console.log("hour: ", hour);
+  //   if (hour.localeCompare(currentHour) === -1) {
+  //     return "past";
+  //   } else if (hour.localeCompare(currentHour) === 0) {
+  //     return "present";
+  //   } else {
+  //     return "future";
+  //   }
+  // }
+
+  // $(".time-block").each(function () {
+  //   let hour = $(this).find(".hour").text();
+  //   let status = getTimeStatus(hour);
+  //   $(this)
+  //     .find(".status-color")
+  //     .removeClass("past present future")
+  //     .addClass(status);
+  // });
+
+  // NOTES: Fixes 9am incorrect class
   function getTimeStatus(hour) {
-    const currentHour = dayjs().format("hA");
+    // NOTES: getting the hour from each time block
+    let currentHour = dayjs().format("hA");
     console.log("currentHour: ", currentHour);
-    console.log("hour: ", hour);
+
     if (hour.localeCompare(currentHour) === -1) {
       return "past";
     } else if (hour.localeCompare(currentHour) === 0) {
       return "present";
+    } else if (hour === "9AM" && currentHour.localeCompare("9AM") === -1) {
+      return "past";
     } else {
       return "future";
     }
   }
 
   $(".time-block").each(function () {
-    const hour = $(this).find(".hour").text();
-    const status = getTimeStatus(hour);
+    let hour = $(this).find(".hour").text();
+    console.log("hour: ", hour);
+    let status = getTimeStatus(hour);
     $(this)
       .find(".status-color")
       .removeClass("past present future")
       .addClass(status);
   });
 
-  // $(".time-block").each(function () {
-  //   // NOTES: getting the hour from each time block
-  //   let hour = $(this).attr("id").split("-")[1];
-  //   hour = dayjs(hour, "H").format("hA");
-
-  //   if (hour < currentHour) {
-  //     $(this)
-  //       .find(".status-color")
-  //       .addClass("past")
-  //       .removeClass("present future");
-  //   } else if (hour === currentHour) {
-  //     $(this)
-  //       .find(".status-color")
-  //       .addClass("present")
-  //       .removeClass("past future");
-  //   } else {
-  //     $(this)
-  //       .find(".status-color")
-  //       .addClass("future")
-  //       .removeClass("past present");
-  //   }
-  // });
-
-  // $(".time-block").each(function () {
-  // NOTES: getting the hour from each time block
-  //   let hour = $(this).attr("id").split("-")[1];
-  //   hour = dayjs(hour, "H").format("hA"); // format hour to 12-hour format with AM/PM
-
-  //   if (hour.localeCompare(currentHour) === -1) {
-  //     $(this).addClass("past").removeClass("present future");
-  //   } else if (
-  //     hour.localeCompare(currentHour) === 0 ||
-  //     (hour.localeCompare(nextHour) === -1 &&
-  //       hour.localeCompare(currentHour) === 1)
-  //   ) {
-  //     $(this).addClass("present").removeClass("past future");
-  //   } else {
-  //     $(this).addClass("future").removeClass("past present");
-  //   }
-  // });
-
-  // console.log(currentHour);
-  // console.log(nextHour);
   console.log($(".time-block"));
 
   // TODO: Add a listener for click events on the save button. This code should
@@ -126,4 +108,6 @@ $(document).ready(function () {
     }
   });
   // TODO: Add code to display the current date in the header of the page.
+
+  currentDateEl.text(today.format("dddd MMMM D, YYYY"));
 });
