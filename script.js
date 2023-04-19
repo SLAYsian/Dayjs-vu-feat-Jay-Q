@@ -1,4 +1,4 @@
-"use strict";
+// "use strict";
 
 // SECTION: DOM ELEMENTS
 let currentDateEl = $("#currentDay");
@@ -54,29 +54,6 @@ $(document).ready(function () {
 
   // $(".time-block").each(function () {
   //   // NOTES: getting the hour from each time block
-  //   let hour = parseInt($(this).attr("id").split("-")[1]);
-  //   let hour24 = hour < 12 ? hour : hour + 12;
-
-  //   if (hour24 < currentHour) {
-  //     $(this)
-  //       .find(".status-color")
-  //       .addClass("past")
-  //       .removeClass("present future");
-  //   } else if (hour24 === currentHour) {
-  //     $(this)
-  //       .find(".status-color")
-  //       .addClass("present")
-  //       .removeClass("past future");
-  //   } else if (hour24 >= calendarStartHour && hour24 <= calendarEndHour) {
-  //     $(this)
-  //       .find(".status-color")
-  //       .addClass("future")
-  //       .removeClass("past present");
-  //   }
-  // });
-
-  // $(".time-block").each(function () {
-  //   // NOTES: getting the hour from each time block
   //   let hour = $(this).attr("id").split("-")[1];
   //   hour = dayjs(hour, "H").format("hA");
 
@@ -86,29 +63,6 @@ $(document).ready(function () {
   //       .addClass("past")
   //       .removeClass("present future");
   //   } else if (hour === currentHour) {
-  //     $(this)
-  //       .find(".status-color")
-  //       .addClass("present")
-  //       .removeClass("past future");
-  //   } else {
-  //     $(this)
-  //       .find(".status-color")
-  //       .addClass("future")
-  //       .removeClass("past present");
-  //   }
-  // });
-
-  // $(".time-block").each(function () {
-  //   // NOTES: getting the hour from each time block
-  //   let hour = $(this).attr("id").split("-")[1];
-  //   hour = dayjs(hour, "H").format("hA");
-
-  //   if (hour.localeCompare(currentHour) === -1) {
-  //     $(this)
-  //       .find(".status-color")
-  //       .addClass("past")
-  //       .removeClass("present future");
-  //   } else if (hour.localeCompare(currentHour) === 0) {
   //     $(this)
   //       .find(".status-color")
   //       .addClass("present")
@@ -150,9 +104,26 @@ $(document).ready(function () {
   // time-block containing the button that was clicked? How might the id be
   // useful when saving the description in local storage?
   //
+  // SECTION: SAVE BUTTON EVENT LISTENER
+  saveBtnEl.on("click", function () {
+    let textAreaEl = $(this).siblings(".description");
+    let timeBlockId = $(this).parent().attr("id");
+    let description = textAreaEl.val();
+    localStorage.setItem(timeBlockId, description);
+  });
+  console.log(this);
+
   // TODO: Add code to get any user input that was saved in localStorage and set
   // the values of the corresponding textarea elements. HINT: How can the id
   // attribute of each time-block be used to do this?
   //
+
+  timeBlockText.each(function () {
+    let timeBlockId = $(this).parent().attr("id");
+    let savedDescription = localStorage.getItem(timeBlockId);
+    if (savedDescription) {
+      $(this).val(savedDescription);
+    }
+  });
   // TODO: Add code to display the current date in the header of the page.
 });
