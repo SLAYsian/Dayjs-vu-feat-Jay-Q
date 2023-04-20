@@ -1,6 +1,40 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --ltpink: #ffe0e9;
+  --plum: #880044;
+  --pink: #f191ac;
+  --dkblue: #392f58;
+  --ltgrey: #dcd2dc;
+  --eggshell: #fffff0;
+}
+
 body {
-  font-family: "Open Sans", sans-serif;
-  font-size: 16px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 17px;
+  color: var(--dkblue);
+  background-color: var(--ltgrey);
+}
+
+h1 {
+  font-family: "Vina Sans", cursive;
+  color: var(--plum);
+  font-size: 4rem;
+  font-weight: bold;
+}
+
+p {
+  font-size: 1.5em;
+}
+
+#current-day {
+  font-family: "Dancing Script", cursive;
+  font-size: 2em;
+  background-color: var(--eggshell);
 }
 
 textarea {
@@ -8,7 +42,7 @@ textarea {
   border: none;
   resize: none;
   color: #000000;
-  border-left: 1px solid black;
+  border-left: 1px solid var(--dkblue);
   padding: 10px;
 }
 
@@ -21,35 +55,40 @@ textarea {
 }
 
 .row {
-  border-top: 1px solid white;
+  border-top: 1px solid whitesmoke;
 }
 
 .hour {
-  background-color: #ffffff;
-  color: #000000;
-  border-top: 1px dashed #000000;
+  background-color: whitesmoke;
+  color: var(--dkblue);
+  font-family: var(--montserrat-font);
+  border-top: 1px dashed var(--dkblue);
+  font-weight: bold;
 }
 
 .past {
-  background-color: #d3d3d3;
-  color: white;
+  background-color: var(--ltpink);
+  color: black;
+  opacity: 0.5;
 }
 
 .present {
-  background-color: #ff6961;
-  color: white;
+  background-color: var(--plum);
+  color: var(--eggshell);
+  font-weight: bold;
 }
 
 .future {
-  background-color: #77dd77;
-  color: white;
+  background-color: var(--pink);
+  color: black;
+  opacity: 0.75;
 }
 
 .saveBtn {
   border-left: 1px solid black;
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
-  background-color: #06aed5;
+  background: radial-gradient(circle, var(--ltgrey) 0%, #1a102dd4 100%);
   color: white;
 }
 

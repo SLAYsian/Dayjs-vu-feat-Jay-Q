@@ -1,7 +1,7 @@
 // "use strict";
 
 // SECTION: DOM ELEMENTS
-let currentDateEl = $("#currentDay");
+let currentDateEl = $("#current-day");
 let timeBlockEl = $(".time-block");
 let saveBtnEl = $(".saveBtn");
 let timeBlockText = $(".description");
@@ -50,7 +50,8 @@ $(document).ready(function () {
   //     .addClass(status);
   // });
 
-  // NOTES: Fixes 9am incorrect class
+  currentDateEl.text(today.format("dddd MMMM D, YYYY"));
+
   function getTimeStatus(hour) {
     // NOTES: getting the hour from each time block
     let currentHour = dayjs().format("hA");
@@ -67,15 +68,63 @@ $(document).ready(function () {
     }
   }
 
+  // Loop through each time block and set the status
   $(".time-block").each(function () {
     let hour = $(this).find(".hour").text();
-    console.log("hour: ", hour);
     let status = getTimeStatus(hour);
+    console.log("hour: ", hour);
     $(this)
       .find(".status-color")
       .removeClass("past present future")
       .addClass(status);
   });
+
+  // Set status of time blocks after the final hour of the day to "past"
+  let finalHour = dayjs("8PM", "hA");
+  let currentHour = dayjs();
+  console.log("currentHour: ", currentHour);
+  if (currentHour.isAfter(finalHour)) {
+    $(".time-block")
+      .find(".status-color")
+      .removeClass("present future")
+      .addClass("past");
+  }
+
+  // Set status of time blocks before the first hour of the day to "future"
+  let firstHour = dayjs("9AM", "hA");
+  if (currentHour.isBefore(firstHour)) {
+    $(".time-block")
+      .find(".status-color")
+      .removeClass("past present")
+      .addClass("future");
+  }
+
+  // NOTES: Fixes 9am incorrect class
+  // function getTimeStatus(hour) {
+  //   // NOTES: getting the hour from each time block
+  //   let currentHour = dayjs().format("hA");
+  //   console.log("currentHour: ", currentHour);
+
+  //   if (hour.localeCompare(currentHour) === -1) {
+  //     return "past";
+  //   } else if (hour.localeCompare(currentHour) === 0) {
+  //     return "present";
+  //   } else if (hour === "9AM" && currentHour.localeCompare("9AM") === -1) {
+  //     return "past";
+  //   } else {
+  //     return "future";
+  //   }
+  // }
+
+  // $(".time-block").each(function () {
+  //   let hour = $(this).find(".hour").text();
+  //   console.log("hour: ", hour);
+  //   let status = getTimeStatus(hour);
+  //   $(this)
+  //     .find(".status-color")
+  //     .removeClass("past present future")
+  //     .addClass(status);
+  // });
 
   console.log($(".time-block"));
 
@@ -93,7 +142,6 @@ $(document).ready(function () {
     let description = textAreaEl.val();
     localStorage.setItem(timeBlockId, description);
   });
-  console.log(this);
 
   // TODO: Add code to get any user input that was saved in localStorage and set
   // the values of the corresponding textarea elements. HINT: How can the id
