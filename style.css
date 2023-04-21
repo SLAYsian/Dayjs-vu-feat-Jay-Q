@@ -20,6 +20,12 @@ body {
   background-color: var(--ltgrey);
 }
 
+header {
+  background-color: var(--ltgrey);
+  border-radius: 75px;
+  padding-bottom: 10px;
+}
+
 h1 {
   font-family: "Vina Sans", cursive;
   color: var(--plum);
