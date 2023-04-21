@@ -22,8 +22,7 @@ I need a daily planner to keep track of my day's events. Today's date should loa
 [Live Deployment](https://slayonce.github.io/Dayjs-vu-feat-Jay-Q/)
 
 ### Screenshots:
-
-![ss-planner](https://user-images.githubusercontent.com/127693250/233530183-8b0f2994-d818-464d-b00d-2589b6bef842.png)
+![ss-planner](https://user-images.githubusercontent.com/127693250/233530674-ef6eac64-2816-4eaf-ac30-dad6a150266f.png)
 ![ss-local-storage](https://user-images.githubusercontent.com/127693250/233530196-3ca5a455-f1ad-4e8e-a21a-c6c6fd77e64b.png)
 
 ### References:
