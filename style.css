@@ -76,6 +76,7 @@ textarea {
   background-color: var(--ltpink);
   color: black;
   opacity: 0.5;
+  font-weight: bold;
 }
 
 .present {
@@ -88,6 +89,7 @@ textarea {
   background-color: var(--pink);
   color: black;
   opacity: 0.75;
+  font-weight: bold;
 }
 
 .saveBtn {
