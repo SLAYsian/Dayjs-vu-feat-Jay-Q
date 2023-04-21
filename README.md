@@ -23,6 +23,9 @@ I need a daily planner to keep track of my day's events. Today's date should loa
 
 ### Screenshots:
 
+![ss-planner](https://user-images.githubusercontent.com/127693250/233530183-8b0f2994-d818-464d-b00d-2589b6bef842.png)
+![ss-local-storage](https://user-images.githubusercontent.com/127693250/233530196-3ca5a455-f1ad-4e8e-a21a-c6c6fd77e64b.png)
+
 ### References:
 
 1. MDN (https://developer.mozilla.org/en-US/)
