@@ -14,12 +14,12 @@ I need a daily planner to keep track of my day's events. Today's date should loa
 
 - Open the deployment link and a daily planner with today's date will display.
 - There are blocks for each hour from 9am - 8pm.
-- If the hour has past, the hour will display a light pink. The current hour will display a plum color. If the hour is still upcoming, it will display in bubblegum pink.
+- If the hour has passed, the hour will display a light pink. The current hour will display a plum color. If the hour is still upcoming, it will display in bubblegum pink.
 - You can enter events in the pink text boxes.
 - You can save the event by clicking the dark blue save icon.
 - If you refresh the page, the text you saved will still appear.
 
-[Live Deployment](https://slayonce.github.io/Dayjs-vu-feat-Jay-Q/)
+[Live Deployment](https://slaysian.github.io/Dayjs-vu-feat-Jay-Q/)
 
 ### Screenshots:
 ![ss-planner](https://user-images.githubusercontent.com/127693250/233530674-ef6eac64-2816-4eaf-ac30-dad6a150266f.png)
